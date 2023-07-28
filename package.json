@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-import-checker-plugin",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Plugin checks absolute and relative paths in the project",
   "keywords": [
     "eslint",
@@ -8,6 +8,13 @@
     "eslint-plugin"
   ],
   "author": "Zav Natalia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZavNatalia/eslint-plugin-import-checker"
+  },
+  "bugs": {
+    "url": "https://github.com/ZavNatalia/eslint-plugin-import-checker/issues"
+  },
   "main": "./lib/index.js",
   "exports": "./lib/index.js",
   "scripts": {

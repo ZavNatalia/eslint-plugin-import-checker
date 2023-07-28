@@ -34,7 +34,7 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "import-checker-plugin/rule-name": 2
+        "import-checker-plugin/rule-name": "error"
     }
 }
 ```
