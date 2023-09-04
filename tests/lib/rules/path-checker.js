@@ -23,7 +23,7 @@ ruleTester.run("path-checker", rule, {
   valid: [
     {
       filename: '/home/natalia/ReactProjects/production-project/src/entities/Article',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
       errors: [{ message: "Within a single slice, all paths must be relative" }],
       options: [
         {
@@ -36,7 +36,7 @@ ruleTester.run("path-checker", rule, {
   invalid: [
     {
       filename: '/home/natalia/ReactProjects/production-project/src/entities/Article',
-      code: "import { addCommentFormActions, addCommentFormReducer } from 'entities/Article/model/slices/addCommentFormSlice';",
+      code: "import { addCommentFormActions, addCommentFormReducer } from 'entities/Article/model/slices/addCommentFormSlice'",
       errors: [{ message: "Within a single slice, all paths must be relative" }],
     },
   ],

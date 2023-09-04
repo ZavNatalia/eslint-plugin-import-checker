@@ -1,35 +1,30 @@
 # import components via public api (`public-api-imports`)
 
-Please describe the origin of the rule here.
-
 ## Rule Details
 
-This rule aims to...
+Absolute import is only allowed from Public API (index.ts).
 
 Examples of **incorrect** code for this rule:
 
 ```js
 
-// fill me in
+import { addCommentFormActions, addCommentFormReducer } from "@/entities/Article/model/slices/addCommentFormSlice"
 
 ```
 
 Examples of **correct** code for this rule:
 
 ```js
-
-// fill me in
-
+import { addCommentFormActions, addCommentFormReducer } from "@/entities/Article"
+```
+```js
+import { addCommentFormActions, addCommentFormReducer } from "../../model/slices/addCommentFormSlice"
 ```
 
 ### Options
 
-If there are any options, describe them here. Otherwise, delete this section.
+You can add any alias:
 
-## When Not To Use It
-
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+    rules: {
+        "import-checker-plugin/public-api-imports": ["error", {alias: "@"}]
+    }

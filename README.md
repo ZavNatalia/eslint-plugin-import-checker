@@ -18,7 +18,7 @@ npm install eslint-plugin-import-checker-plugin --save-dev
 
 ## Usage
 
-Add `import-checker` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `import-checker-plugin` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
@@ -34,7 +34,8 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "import-checker-plugin/rule-name": "error"
+        "import-checker-plugin/rule-name": ["error", { "alias": "@" }],
+        "import-checker-plugin/public-api-imports": ["error", { "alias": "@" }]
     }
 }
 ```
@@ -43,9 +44,10 @@ Then configure the rules you want to use under the rules section.
 
 <!-- begin auto-generated rules list -->
 
-| Name                                       | Description                          |
-| :----------------------------------------- | :----------------------------------- |
-| [path-checker](docs/rules/path-checker.md) | feature sliced relative path checker |
+| Name                                             | Description                          |
+|:-------------------------------------------------| :----------------------------------- |
+| [path-checker](docs/rules/path-checker.md)       | Within a single slice, all paths must be relative |
+| [public-api-imports](docs/rules/public-api-imports.md) | Absolute import is only allowed from Public API (index.ts) |
 
 <!-- end auto-generated rules list -->
 

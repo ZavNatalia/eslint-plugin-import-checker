@@ -29,7 +29,7 @@ const aliasOptions = [
 ruleTester.run("public-api-imports", rule, {
   valid: [
     {
-      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
       errors: [],
     },
     {
