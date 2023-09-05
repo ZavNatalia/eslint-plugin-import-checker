@@ -35,7 +35,20 @@ Then configure the rules you want to use under the rules section.
 {
     "rules": {
         "import-checker-plugin/rule-name": ["error", { "alias": "@" }],
-        "import-checker-plugin/public-api-imports": ["error", { "alias": "@" }]
+        "import-checker-plugin/public-api-imports": [
+          "error", 
+          {
+            "alias": "@",
+            "testFilesPatterns": [",**/*.test.ts", ",**/*.story.*", ",**/StoreDecorator.tsx"]
+          }
+        ],
+        "import-checker-plugin/layer-imports": [
+          "error",
+          {
+            "alias": "@",
+            "ignoreImportPatterns": ["**/StoreProvider"]
+          }
+        ]
     }
 }
 ```
@@ -44,10 +57,11 @@ Then configure the rules you want to use under the rules section.
 
 <!-- begin auto-generated rules list -->
 
-| Name                                             | Description                          |
-|:-------------------------------------------------| :----------------------------------- |
-| [path-checker](docs/rules/path-checker.md)       | Within a single slice, all paths must be relative |
-| [public-api-imports](docs/rules/public-api-imports.md) | Absolute import is only allowed from Public API (index.ts) |
+| Name                                             | Description                                                |
+|:-------------------------------------------------|:-----------------------------------------------------------|
+| [path-checker](docs/rules/path-checker.md)       | Within a single slice, all paths must be relative          |
+| [public-api-imports](docs/rules/public-api-imports.md) | Absolute import is only allowed from Public API (index.ts)|
+| [layer-imports](docs/rules/layer-imports.md) | A layer can only import underlying layers into itself    |
 
 <!-- end auto-generated rules list -->
 

@@ -30,11 +30,11 @@ import { addCommentFormActions, addCommentFormReducer } from "@/entities/Article
 You can add any alias or test files patterns:
 
     rules: {
-        'import-checker-plugin/public-api-imports': [
-            'error',
+        "import-checker-plugin/public-api-imports": [
+            "error",
             {
-                alias: '@',
-                testFilesPatterns: ['**/*.test.ts', '**/*.story.*', '**/StoreDecorator.tsx'],
+                alias: "@",
+                testFilesPatterns: ["**/*.test.ts", "**/*.story.*", "**/StoreDecorator.tsx"],
             },
         ],
     }
