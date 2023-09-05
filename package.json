@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-import-checker-plugin",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Plugin checks absolute and relative paths in the project",
   "keywords": [
     "eslint",
@@ -26,6 +26,7 @@
     "publish": "npm publish --access public"
   },
   "dependencies": {
+    "micromatch": "^4.0.5",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {

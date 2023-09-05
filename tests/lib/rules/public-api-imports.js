@@ -37,6 +37,24 @@ ruleTester.run("public-api-imports", rule, {
       errors: [],
       options: aliasOptions,
     },
+    {
+      filename: '/home/natalia/ReactProjects/production-project/src/entities/file.test.ts',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: '/home/natalia/ReactProjects/production-project/src/entities/StoreDecorator.tsx',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    }
   ],
 
   invalid: [
@@ -44,6 +62,24 @@ ruleTester.run("public-api-imports", rule, {
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/slices/addCommentFormSlice'",
       errors: [{message: "Absolute import is only allowed from Public API (index.ts)"}],
       options: aliasOptions,
+    },
+    {
+      filename: '/home/natalia/ReactProjects/production-project/src/entities/StoreDecorator.tsx',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing/file.tsx'",
+      errors: [{message: 'Absolute import is only allowed from Public API (index.ts)'}],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: '/home/natalia/ReactProjects/production-project/src/entities/forbidden.ts',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [{message: 'Test data must be imported from publicApi/testing.ts'}],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
     }
   ],
 });
