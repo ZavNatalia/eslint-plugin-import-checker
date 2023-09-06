@@ -1,28 +1,15 @@
-/**
- * @fileoverview import components via public api
- * @author Natalia
- */
 "use strict";
-
-//------------------------------------------------------------------------------
-// Requirements
-//------------------------------------------------------------------------------
 
 const rule = require("../../../lib/rules/public-api-imports"),
   RuleTester = require("eslint").RuleTester;
 
-
-//------------------------------------------------------------------------------
-// Tests
-//------------------------------------------------------------------------------
-
 const ruleTester = new RuleTester({
-  parserOptions: {ecmaVersion: 6, sourceType: 'module'}
+  parserOptions: {ecmaVersion: 6, sourceType: "module"}
 });
 
 const aliasOptions = [
   {
-    alias: '@'
+    alias: "@"
   }
 ]
 
@@ -38,21 +25,21 @@ ruleTester.run("public-api-imports", rule, {
       options: aliasOptions,
     },
     {
-      filename: '/home/natalia/ReactProjects/production-project/src/entities/file.test.ts',
+      filename: "/home/natalia/ReactProjects/production-project/src/entities/file.test.ts",
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
       errors: [],
       options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+        alias: "@",
+        testFilesPatterns: ["**/*.test.ts", "**/*.test.ts", "**/StoreDecorator.tsx"]
       }],
     },
     {
-      filename: '/home/natalia/ReactProjects/production-project/src/entities/StoreDecorator.tsx',
+      filename: "/home/natalia/ReactProjects/production-project/src/entities/StoreDecorator.tsx",
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
       errors: [],
       options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+        alias: "@",
+        testFilesPatterns: ["**/*.test.ts", "**/*.test.ts", "**/StoreDecorator.tsx"]
       }],
     }
   ],
@@ -60,25 +47,27 @@ ruleTester.run("public-api-imports", rule, {
   invalid: [
     {
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/slices/addCommentFormSlice'",
-      errors: [{message: "Absolute import is only allowed from Public API (index.ts)"}],
+      errors: [{messageId: "PUBLIC_ERROR"}],
       options: aliasOptions,
+      output: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
     },
     {
-      filename: '/home/natalia/ReactProjects/production-project/src/entities/StoreDecorator.tsx',
+      filename: "/home/natalia/ReactProjects/production-project/src/entities/StoreDecorator.tsx",
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing/file.tsx'",
-      errors: [{message: 'Absolute import is only allowed from Public API (index.ts)'}],
+      errors: [{messageId: "PUBLIC_ERROR"}],
       options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+        alias: "@",
+        testFilesPatterns: ["**/*.test.ts", "**/*.test.ts", "**/StoreDecorator.tsx"]
       }],
+      output: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
     },
     {
-      filename: '/home/natalia/ReactProjects/production-project/src/entities/forbidden.ts',
+      filename: "/home/natalia/ReactProjects/production-project/src/entities/forbidden.ts",
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
-      errors: [{message: 'Test data must be imported from publicApi/testing.ts'}],
+      errors: [{messageId: "TESTING_PUBLIC_ERROR"}],
       options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+        alias: "@",
+        testFilesPatterns: ["**/*.test.ts", "**/*.test.ts", "**/StoreDecorator.tsx"]
       }],
     }
   ],
